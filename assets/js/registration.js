@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	
+	
+
 	var config = {
 	    apiKey: "AIzaSyBJEf-9pGFWooqFdxd-sLAkozFU-YV369M",
 	    authDomain: "project-weeken-warrior.firebaseapp.com",
@@ -10,14 +12,25 @@ $(document).ready(function(){
 	  };
 	    
 	firebase.initializeApp(config);
-
-	// Create a variable to reference the database
+// Create a variable to reference the database
 	var database = firebase.database();
+	var currentusername = sessionStorage.getItem("username");
+
 	
-	$('select').material_select();
+
+	console.log("CURRENT USER :: "+currentusername);
+		
+	var userref = database.ref("users/"+currentusername);
+
+	userref.once("value").then(function(snapshot) {
+
+		$("#firstName").text(snapshot.val().firstname);
+		$("#lastName").text(snapshot.val().lastname);
+		$("#email").text(snapshot.val().email);
+		console.log(snapshot.val().firstname);
+    });
 
 	$("#registration-form").validate({
-		
 
 		errorClass: 'invalid',
              errorPlacement: function (error, element) {
@@ -42,9 +55,8 @@ $(document).ready(function(){
 	      },
 	      phone: {
 	      	 required: true,
-             number: true,
-             length: 10
-	      }
+             number: true
+         }
 	      
 	    },
 	    // Specify validation error messages
@@ -62,44 +74,88 @@ $(document).ready(function(){
                 number: "Please enter only numeric value"
           },
 	      email: "Please enter a valid email address"
-	    },
+	    }
 	    // Make sure the form is submitted to the destination defined
 	    // in the "action" attribute of the form when valid
-	    submitHandler: function(form) {
+	   /* submitHandler: function(form) {
 	    	event.preventDefault();
 	    	registeruser();
-	     }
+	     }*/
 	  });
+
+	var firstname,lastname,childfirstname,childlastname,address,city,zipcode,phone,email,dob,gamelocation,agegroup,emailnotify,textnotify;
+
+	$("#ready").on("click", function(event){
+
+		event.preventDefault();
+
+		firstname = $("#firstName").val().trim();
+		lastname = $("#lastName").val().trim();
+		childfirstname = $("#childFirstName").val().trim();
+		childlastname = $("#childLastName").val().trim();
+		address = $("#address").val().trim();
+		city = $("#city").val().trim();
+		zipcode = $("#zipcode").val().trim();
+		phone = $("#phoneNumber").val().trim();
+		email = $("#email").val().trim();
+		dob = moment($("#dateOfBirth").val().trim()).format('MM/DD/YYYY');
+		gamelocation = $("#location").val().trim();
+		agegroup = $("#agegroup").val().trim();
+		emailnotify = $("#emailnotify").val();
+		textnotify = $("#textnotify").val();
+
+		var authuser = firebase.auth().currentUser;
+		var userinfo = {
+
+			firstname: firstname,
+   			lastname: lastname,
+   			email: email,
+   			emailverified: authuser.emailVerified, 
+  			address: address,
+   			city: city,
+   			phone: phone,
+   			emailnotify: emailnotify,
+   			textnotify: textnotify,
+   			zipcode: zipcode
+		}
+		var childinfo = {
+
+			childfirstname: childfirstname,
+   			childlastname: childlastname,
+   			dob: dob,
+   			gamelocation: gamelocation,
+   			agegroup: agegroup
+		}
+			
+   		var currentusername = sessionStorage.getItem("username");
+			
+		firebase.database().ref('users/'+currentusername+'/parent').update(userinfo);
+		firebase.database().ref('users/'+currentusername+'/child'+childfirstname).set(childinfo);
+
+		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
+  			console.log(snapshot.val().childfirstname);
+  			alert("child information added successfully");
+  			$("#registration-form").reset();
+  		});
+	
+	});
+
+	$("#addchild").on("click", function(){
+
+		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
+  			console.log(snapshot.val().zipcode);
+  			Materialize.updateTextFields();
+  			$("#firstName").val(snapshot.val().firstname).focus();
+  			$("#lastName").val(snapshot.val().lastname).focus();
+  			$("#address").val(snapshot.val().address).focus();
+  			$("#city").val(snapshot.val().city).focus();
+  			$("#zipcode").val(snapshot.val().zipcode).focus();
+  			$("#phoneNumber").val(snapshot.val().phone).focus();
+  			$("#email").val(snapshot.val().email).focus();
+  		});
+
+	});
+
 });
 
-function registeruser(){
-		
-		let firstname = $("#firstName").val().trim();
-		let lastname = $("#lastName").val().trim();
-		let childfirstname = $("#childFirstName").val().trim();
-		let childlastname = $("#childLastName").val().trim();
-		let address = $("#address").val().trim();
-		let city = $("city").val().trim();
-		let zipcode = $("zipcode").val().trim();
-		let phone = $("#phoneNumber").val().trim();
-		let email = $("#email").val().trim();
-		let dob = $("#dateOfBirth").val().trim();
-		let gamelocation = $("#location").val().trim();
-		let agegroup = $("#agegroup").val().trim();
-		let jerseysize = $("#jerseysize").val().trim();
-		let chlidspeed = $("#chlidspeed").val().trim();
-		let jerseyname = $("#jerseyname").val().trim();
-		
-		firebase.database().ref('users/'+username).set({
-   			childfirstname: childfirstname,
-   			childlastname: childlastname,
-   			address: address,
-   			city: city
-  		});
-
-		var userId = firebase.auth().currentUser;
-  		firebase.database().ref('users').once('value').then(function(snapshot){
-  			console.log(snapshot.val());
-  		});
-}
 

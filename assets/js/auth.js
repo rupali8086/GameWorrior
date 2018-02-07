@@ -88,18 +88,28 @@ function signup(){
 
 		firebase.auth().createUserWithEmailAndPassword(email, password).then(function(result) {
 			  
-			  var user = firebase.auth().currentUser;
-
-			  user.sendEmailVerification().then(function() {
-
-			  		firebase.database().ref('users/'+username).set({
-   						 firstname: firstname,
+			  firebase.database().ref('users/'+username+'/parent').set({
+			  			 firstname: firstname,
    						 lastname: lastname,
    						 email: email,
-   						 password: password
+   						 emailverified: false,
+   						 password: password,
+   						 address: " ",
+   						 city: " ",
+   						 zipcode: 00000,
+   						 phone: 9999999999,
+   						 textnotify: false,
+   						 emailnotify: false
   					});
+  					sessionStorage.setItem("email", email);
+  					sessionStorage.setItem("username", username);
+
+  			  var user = firebase.auth().currentUser;
+			  user.sendEmailVerification().then(function(){
+
+			  		console.log("Email Sent Successfully to user"+user.email);
   					clearform();
-  					window.location.href = "registration.html";
+  					window.location.href = "options.html";
 
   				// Email sent.
 			 }).catch(function(error) {
@@ -117,29 +127,33 @@ function signup(){
  		event.preventDefault();
 
 		console.log("inside connect");
+		var username;
 
  		let email_signin = $("#email-signin").val().trim();
 		let password_signin = $("#password-signin").val().trim();
  		firebase.auth().signInWithEmailAndPassword(email_signin, password_signin).catch(function(error) {
 			  // Handle Errors here.
-			  var errorCode = error.code;
 			  var errorMessage = error.message;
 			  // The email of the user's account used.
 			  var email = error.email;
-			  // The firebase.auth.AuthCredential type that was used.
-			  var credential = error.credential;
-	  		  // ...
-	  		 console.log("ERRORS :: "+ errorCode);
-			
-			});
+			  console.log("error in sign-in :: "+ errorMessage + " :: "+email);
+		});
+ 		var current_user = firebase.auth().currentUser;
+ 		console.log(" currentuser :: "+current_user.emailVerified);
 
  		firebase.auth().onAuthStateChanged(function(user) {
   		if (user!=null) {
-    		// User is signed in.
-    		console.log("auth changed :: SUCCCCESSSSS "+user);
-    		clearform();
-  			window.location.href = "registration.html";
-  		} else {
+    		console.log("auth changed :: SUCCCCESSSSS "+user.email);
+    		firebase.database().ref('users/').orderByChild('email').equalTo(user.email).on("child_added", function(snapshot) {
+
+    			sessionStorage.setItem( "email", user.email);
+    			sessionStorage.setItem( "username", snapshot.key);
+				console.log(snapshot.val());
+    		});
+    		
+  			clearform();
+  			window.location.href = "options.html";
+  			} else {
     		// No user is signed in.
     		console.log("auth changed FAILLLUREEEELOLNO:: "+user);
   		}
@@ -158,7 +172,7 @@ function signup(){
 			  var user = result.user;
 
 			  console.log("Auth :: "+user);
-			  window.location.href = "registration.html";
+			  window.location.href = "options.html";
 			
 			}).catch(function(error) {
 			  // Handle Errors here.
@@ -169,7 +183,7 @@ function signup(){
 			  // The firebase.auth.AuthCredential type that was used.
 			  var credential = error.credential;
 	  		  // ...
-	  		 console.log("ERRORS :: "+ errorCode);
+	  		 console.log("Error in google signin:: "+ errorCode);
 			
 			});
 	});
@@ -185,7 +199,7 @@ function signup(){
   		// The signed-in user info.
   		var user = result.user;
   		console.log("FB Login :: "+user);
-  		window.location.href = "registration.html";
+  		window.location.href = "options.html";
   		// ...
 		}).catch(function(error) {
   		// Handle Errors here.
