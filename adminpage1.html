@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>game worrior</title>
+    <title>Admin page</title>
 
     <link rel="icon" href="assets/image/favicon.ico" type="image/ico" sizes="16x16">
 
@@ -24,24 +24,321 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-</head>
-<body>
+    <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
 
-    <div class="jumbotron">
-    admin page add sports; add teams to sports; add people to teams, add schedule to teams, add parents to officiate, remove or change all of the above. Add counters such as games per team, people per teams parents per game, maybe team colors
-    <!-- child Speed -->
-                 <i class="material-icons prefix">directions_run</i>
-                <label>Rate your child's speed* (1=slow, 5=fast)</label>
-                 <select class="browser-default">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                 </select><br>
+
+        <style>
+            body{
+                color:white; background: #590a18;
+            }
+             .ui-tabs-anchor {outline: none;}
+             #soccer,#football,#hockey,#baseball,#addNewGame{
+                margin:30px;
+                height: auto;
+                }
+
+        </style>
+       
+<script type="text/javascript">
+   $(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+  });
+</script>
+
+    </head>
+
+
+    <body >
+         <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper">
+        <!-- <a href="#!" class="brand-logo">Logo</a> -->
+        Welcome back Admin
+        <ul class="right hide-on-med-and-down">
+          <!-- <li><a href="#batch" class="btn">Batch Contacts</a></li> -->
+          <li><a id="batch" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Coach1 : +1 6035025555  Coach2 : +1 6035026666 ">Coach Contacts</a></li>
+          <li><a href="index.html" class="btn">SIGN OUT</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+    <div>
+
+        <!-- drop down -->
+    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
+
+          <!-- Dropdown Structure -->
+         <ul id='dropdown1' class='dropdown-content'>
+           <li><a href="#football">football</a></li>
+           <li><a href="#hockey">Hockey</a></li>
+           <li><a href="#baseball">Baseball</a></li>
+           <li><a href="#soccer">soccer</a></li>
+          
+          
+         </ul>
+            <!-- <button class="btn" id="todayDate"></button> -->
+
+        
+       <hr>
+        <div class="container body">
+        <!-- weather widget start -->
+            <a target="_blank" href="http://www.booked.net/weather/portsmouth-3880"><img src="https://w.bookcdn.com/weather/picture/32_3880_0_1_17bc9c_250_13a085_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=57198"  alt="booked.net"/></a><!-- weather widget end -->
+        </div>
+         <div class="container body">
+           <div id="tabs" style="height: 360px">
+            <ul>
+            <li ><a href="#tabs-1" style="font-size: 12px">New Registartion</a></li>
+            <li ><a href="#tabs-2"  style="font-size: 12px">Batches</a></li>
+            </ul>
+            <div id="tabs-1" style="height: 300px">
+            <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+            </div>
+            <div id="tabs-2" style="height: 300px">
+            <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+            </div>
+            </div>
+            <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+            <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
+            <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+
+        </div>
+
+
+
+        <!-- table : games
+        ================================================== -->
+             <!-- table1 -->
+    <div class="container body">
+            <!-- <div class="clearfix"></div> -->
+             <div class="col" id="baseball">
+                <h2>Baseball</h2>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- football -->
+            <div class="container body">
+                <div class="col" id="football">
+                
+                    <h2>Football game </h2>
+                    
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+<!-- soccer -->
+                 <div class="container body">
+                 <div class="col" id="soccer">
+                
+                    <h2>Soccer</h2>
+                    
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+<!-- hockey -->
+ <div class="container body">
+            <div class="col" id="hockey">
+
+                <h2>Hockey</h2>
+                 <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+
+       </div>
+<!-- add new game -->
+              <div class="clearfix"></div>
+               <!-- Modal Trigger -->
+    <div class="container body">
+    <!-- Modal Structure -->
+    <div id="addNewGame" class="table-bordered">
+      
+             <h3>add game here</h3>
+              <!-- input from user -->
+               <a class='dropdown-button btn' href='#' data-activates='dropdown1'>SELECT GAME</a>
+
+                  <!-- Dropdown Structure -->
+                 <ul id='dropdown1' class='dropdown-content'>
+                   <li id="#footballGame">football</li>
+                   <li id="#hockeyGame">Hockey</li>
+                   <li id="#baseballGame">Baseball</li>
+                   <li id="#soccerGame">soccer</li>
+                 </ul>
+              <div class="row">
+                  <div class="input-field col s6">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="gameName" type="text" class="validate">
+                     <label >Game Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="time-slot" type="text" class="timepicker">
+                     <label >Time Slot</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s4">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="adminGameLocation" type="text" class="validate">
+                     <label >Game location Address</label>
+                  </div>
+                  <div class="input-field col s4">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="adminAddCity" type="text" class="validate">
+                     <label >city</label>
+                  </div>
+                  <div class="input-field col s4">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="adminZipcode" type="text" class="validate">
+                     <label >zipcode</label>
+                  </div>
+                </div>
+                
+                <center>
+                  <button class="btn waves-effect waves-light teal" type="" name="action">Submit</button>
+              </center><br>
+          </div>
+        </div>
     </div>
- </body>
-</html>
+    </div>
+
+    
+
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/jquery.min.js"></script>
+
+
+        <script src="js/bootstrap.min.js"></script>
+        
+    </body>
+    </html>

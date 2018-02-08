@@ -101,8 +101,12 @@ function signup(){
    						 textnotify: false,
    						 emailnotify: false
   					});
-  					sessionStorage.setItem("email", email);
-  					sessionStorage.setItem("username", username);
+			  firebase.database().ref('users/'+username).update({
+
+			  		usertype: "parent"
+			  });
+			  sessionStorage.setItem("email", email);
+  			  sessionStorage.setItem("username", username);
 
   			  var user = firebase.auth().currentUser;
 			  user.sendEmailVerification().then(function(){

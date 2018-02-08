@@ -103,6 +103,7 @@ $(document).ready(function(){
 		agegroup = $("#agegroup").val().trim();
 		emailnotify = $("#emailnotify").val();
 		textnotify = $("#textnotify").val();
+		childnextgame = moment().format("MM/DD/YYYY");
 
 		var authuser = firebase.auth().currentUser;
 		var userinfo = {
@@ -124,7 +125,10 @@ $(document).ready(function(){
    			childlastname: childlastname,
    			dob: dob,
    			gamelocation: gamelocation,
-   			agegroup: agegroup
+   			agegroup: agegroup,
+   			nextgame: childnextgame,
+   			gamewin: 0,
+   			gameplayed: 0
 		}
 			
    		var currentusername = sessionStorage.getItem("username");
@@ -134,17 +138,20 @@ $(document).ready(function(){
 
 		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
   			console.log(snapshot.val().childfirstname);
-  			alert("child information added successfully");
   			$("#registration-form").reset();
+  			alert("child information added successfully");
   		});
 	
 	});
 
 	$("#addchild").on("click", function(){
 
+		event.preventDefault();
 		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
-  			console.log(snapshot.val().zipcode);
+  			
   			Materialize.updateTextFields();
+  			console.log("Parent : "+snapshot.val().firstname);
+
   			$("#firstName").val(snapshot.val().firstname).focus();
   			$("#lastName").val(snapshot.val().lastname).focus();
   			$("#address").val(snapshot.val().address).focus();
@@ -152,6 +159,8 @@ $(document).ready(function(){
   			$("#zipcode").val(snapshot.val().zipcode).focus();
   			$("#phoneNumber").val(snapshot.val().phone).focus();
   			$("#email").val(snapshot.val().email).focus();
+
+  			
   		});
 
 	});
