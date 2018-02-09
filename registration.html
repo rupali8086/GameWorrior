@@ -55,7 +55,9 @@
         padding: 40px;
         padding-top: 10px;
       }
-
+      #ready{
+         float: right;
+      }
       .confirmation-tabs-btn
       {
         position: absolute;
@@ -78,7 +80,8 @@
           <div class="form-container">
             <h3 class="teal-text">2018 Registration</h3>
             <div>
-               <button class="btn waves-effect waves-light teal" id="addchild">ADD Another Player</button>
+             <!--  <button class="btn waves-effect waves-light teal" id="showprofile">Profile</button> -->
+               <button class="btn waves-effect waves-light teal" id="addchild">Add Another player</button>
             </div>
             <hr>
             <!-- first row -->
@@ -149,22 +152,16 @@
                 </div>
                 <div class="input-field col m6">
                   <i class="material-icons prefix">location_city</i>
-                 <select id="location" name="location">
+                 <select id="academy" name="academy">
                     <option value="" disabled selected>Choose your option</option>
-                    <option value="Portsmouth">Portsmouth</option>
-                    <option value="Durham">Durham</option>
-                    <option value="Dover">Dover</option>
-                    <option value="Derry">Derry</option>
-                    <option value="New Market">New Market</option>
+                    <option value="Baseball">Baseball Academy</option>
+                    <option value="Hockey">Hockey Academy</option>
+                    <option value="Football">Football Academy</option>
+                    <option value="Soccer">Soccer Academy</option>
                  </select>
-                 <label>Game Location</label>
+                 <label>Game Academy</label>
                </div>
-              <!--  <div class="input-field col m6">
-                    <i class="material-icons prefix">date_range</i>
-                    <input id="playDay" name="playdate" type="text" class="datepicker">
-                    <label for="playDay">Select your play Day </label>
-                </div> -->
-             </div>
+              </div>
               <!-- Grades=== -->
               <div class="row"> 
               <div class="input-field col m6">
@@ -173,29 +170,16 @@
                     <option value="" disabled selected>Choose your option</option>
                     <option value="1">Kids Group (5yrs - 10yrs)</option>
                     <option value="2">Teen Group (11 - 16yrs)</option>
-                    <!-- <option value="2">Grade 2</option>
-                    <option value="3">Grade 3</option>
-                    <option value="4">Grade 4</option>
-                    <option value="5">Grade 5</option>
-                    <option value="6">Grade 6</option>
-                    <option value="7">Grade 7</option>
-                    <option value="8">Grade 8</option>
-                    <option value="9">Grade 9</option>
-                    <option value="10">Grade 10</option>
-                    <option value="11">Grade 11</option>
-                    <option value="12">Grade 12</option> -->
-                  </select>
-                  <label>* Age Group </label>
+                 </select>
+                 <label>* Age Group </label>
               </div>
                 <!-- child jersey size -->       
               <div class="input-field col m6">
                 <i class="material-icons prefix">directions_run</i>
                  <select id="jerseysize">
                     <option value="" disabled selected>Choose your option</option>
-                    <option value="0">2T</option>
-                    <option value="1">3T</option>
-                    <option value="2">4T</option>
-                    <option value="3">5T</option>
+                    <option value="4T">4T</option>
+                    <option value="5T">5T</option>
                     <option value="Youth Small">Youth Small</option>
                     <option value="Youth medium">Youth Medium</option>
                     <option value="Youth Large">Youth Large</option>
@@ -251,10 +235,13 @@
                 </label>
               </div><br><br>
             <center>
-                <button class="btn waves-effect waves-light teal" id="ready">Ready To Play</button><br><br>
+               
+                <button class="btn waves-effect waves-light teal" id="regist1">REGISTER</button>
+                <br><br>
            </center>
           
         </form>
+        
       </div>
  
     </div>
