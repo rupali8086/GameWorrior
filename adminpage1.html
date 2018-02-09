@@ -31,10 +31,11 @@
 
         <style>
             body{
-                color:white; background: #590a18;
+                color:white; 
+                background: #590a18;
             }
-             .ui-tabs-anchor {outline: none;}
-             #soccer,#football,#hockey,#baseball,#addNewGame{
+            .ui-tabs-anchor {outline: none;}
+            #soccer,#football,#hockey,#baseball,#addNewGame{
                 margin:30px;
                 height: auto;
                 }
@@ -114,7 +115,7 @@
                   </div>
                   <div class="input-field col s6">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="gameDate" type="text" class="timepicker">
+                     <input id="gameDate" type="text" class="datepicker">
                      <label >Date</label>
                   </div>
                   <div class="input-field col s6">
@@ -320,11 +321,30 @@
     
        
         <!-- ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/jquery.min.js"></script>
+         <script type="text/javascript">
+        // for date 
+        $('select').material_select();  
+        $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 
-
-        <script src="js/bootstrap.min.js"></script>
-        
+      $('.timepicker').pickatime({
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Clear', // text for clear-button
+    canceltext: 'Cancel', // Text for cancel-button
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker
+  });
+    </script>
+    <script src="assets/js/registration.js"></script>
     </body>
     </html>
