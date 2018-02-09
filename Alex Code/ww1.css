@@ -64,5 +64,9 @@ footer a:hover{
    background: #3d6277;
   padding-top: 2em;
   }
-
-
+.button {
+  text-align: center;
+}
+.intro {
+  text-align: center;
+}
