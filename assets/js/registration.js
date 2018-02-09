@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	
-	
-
 	var config = {
 	    apiKey: "AIzaSyBJEf-9pGFWooqFdxd-sLAkozFU-YV369M",
 	    authDomain: "project-weeken-warrior.firebaseapp.com",
@@ -9,6 +6,7 @@ $(document).ready(function(){
 	    projectId: "project-weeken-warrior",
 	    storageBucket: "project-weeken-warrior.appspot.com",
 	    messagingSenderId: "11980125710"
+
 	  };
 	    
 	firebase.initializeApp(config);
@@ -85,7 +83,7 @@ $(document).ready(function(){
 
 	var firstname,lastname,childfirstname,childlastname,address,city,zipcode,phone,email,dob,gamelocation,agegroup,emailnotify,textnotify;
 
-	$("#ready").on("click", function(event){
+	$("#register").on("click", function(event){
 
 		event.preventDefault();
 
@@ -99,7 +97,7 @@ $(document).ready(function(){
 		phone = $("#phoneNumber").val().trim();
 		email = $("#email").val().trim();
 		dob = moment($("#dateOfBirth").val().trim()).format('MM/DD/YYYY');
-		gamelocation = $("#location").val().trim();
+		academy = $("#academy").val().trim();
 		agegroup = $("#agegroup").val().trim();
 		emailnotify = $("#emailnotify").val();
 		textnotify = $("#textnotify").val();
@@ -124,7 +122,7 @@ $(document).ready(function(){
 			childfirstname: childfirstname,
    			childlastname: childlastname,
    			dob: dob,
-   			gamelocation: gamelocation,
+   			academy: academy,
    			agegroup: agegroup,
    			nextgame: childnextgame,
    			gamewin: 0,
@@ -138,7 +136,7 @@ $(document).ready(function(){
 
 		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
   			console.log(snapshot.val().childfirstname);
-  			$("#registration-form").reset();
+  			$("#registration-form")[0].reset();
   			alert("child information added successfully");
   		});
 	
@@ -159,7 +157,10 @@ $(document).ready(function(){
   			$("#zipcode").val(snapshot.val().zipcode).focus();
   			$("#phoneNumber").val(snapshot.val().phone).focus();
   			$("#email").val(snapshot.val().email).focus();
-
+  			if(snapshot.val().emailnotify == "on")
+  				$("#emailnotify").prop('checked', true);
+  			if(snapshot.val().textnotify == "on")
+  				$("#textnotify").prop('checked', true);
   			
   		});
 
