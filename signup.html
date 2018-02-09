@@ -29,7 +29,7 @@
     <style type="text/css">
     
       body{
-        background-image: url("assets/image/youth.jpg") ;
+        background-image: url("assets/image/sports2.jpg") ;
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -41,9 +41,11 @@
         }
         .container
         {
-          margin-top: 50px;
-          width: 600px;
+          margin-top: 30px;
+          margin-right: 80px;
+          width: 400px;
           height: auto;
+          border-radius: 50px;
          }
         .form-container
         {
@@ -56,21 +58,21 @@
 
   </style>
 </head>
-<body>
+<body class="animated slideInLeft">
 
    <!-- SIGN IN -->
-   <div class="container white z-depth-2 parallax-container parallax">
+   <div class="container white z-depth-2 ">
     <div class="row">
      <div id="login" class="col s12 ">
        <form class="col s12" method="POST" >
-         <div class="form-container">
+         <div class="form-container ">
           <!-- navbar for sign in  or sign up -->
             <nav>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo">SIGN  IN </a>
-                      <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <a href="#" class="brand-logo center-align">SIGN  IN </a>
+                      <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li><a class="waves-effect waves-light  modal-trigger signup" href="#register">SIGN UP HERE</a></li>
-                      </ul>
+                      </ul> -->
                 </div>
             </nav>
             <!-- end nav bar -->
@@ -95,15 +97,16 @@
                  <button id="connect" class="btn waves-effect waves-light teal">Connect</button><br><br>
                    <a href="">Forgot password ?</a><br>
                </center>
+               <hr>
                <!-- connect with fb or google -->
-               <div class="row">
-                <div class="input-field col 12">
+               <center>
                     <img src="assets/image/fb1.png" id="fbsignin" width="230px" height="45px">
                     <img src="assets/image/google1.png" id="googlesignin" width="230px" height="50px">
-                </div>
-              </div>
+               </center>
              <hr>
-          </div>
+             <center>
+             <a class="waves-effect waves-light  modal-trigger signup btn pulse" href="#register">SIGN UP HERE</a>
+          </center>
        </form>
 <!-- ====================================================================================== -->
     <!-- Modal Trigger -->

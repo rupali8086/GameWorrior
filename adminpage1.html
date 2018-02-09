@@ -38,77 +38,121 @@
                 margin:30px;
                 height: auto;
                 }
+            .nav-wrapper{padding: 20px;}
 
         </style>
        
-<script type="text/javascript">
-   $(document).ready(function(){
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
-  });
-</script>
-
-    </head>
-
-
-    <body >
+      <script type="text/javascript">
+         $(document).ready(function(){
+          // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+          $('.modal').modal();
+        });
+      </script>
+  </head>
+   <body >
+        <!-- navbar -->
          <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <!-- <a href="#!" class="brand-logo">Logo</a> -->
-        Welcome back Admin
-        <ul class="right hide-on-med-and-down">
-          <!-- <li><a href="#batch" class="btn">Batch Contacts</a></li> -->
-          <li><a id="batch" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Coach1 : +1 6035025555  Coach2 : +1 6035026666 ">Coach Contacts</a></li>
-          <li><a href="index.html" class="btn">SIGN OUT</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-    <div>
-
-        <!-- drop down -->
-    <a class='dropdown-button btn' href='#' data-activates='dropdown1'>Drop Me!</a>
-
-          <!-- Dropdown Structure -->
-         <ul id='dropdown1' class='dropdown-content'>
-           <li><a href="#football">football</a></li>
-           <li><a href="#hockey">Hockey</a></li>
-           <li><a href="#baseball">Baseball</a></li>
-           <li><a href="#soccer">soccer</a></li>
-          
-          
-         </ul>
-            <!-- <button class="btn" id="todayDate"></button> -->
-
-        
-       <hr>
+            <nav>
+              <div class="nav-wrapper">
+                <!-- <a href="#!" class="brand-logo">Logo</a> -->
+                Welcome back Admin
+                <ul class="right hide-on-med-and-down">
+                  <!-- <li><a href="#batch" class="btn">Batch Contacts</a></li> -->
+                  <li><a id="batch" class="btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Coach1 : +1 6035025555  Coach2 : +1 6035026666 ">Coach Contacts</a></li>
+                  <li><a href="index.html" class="btn">SIGN OUT</a></li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        <div>
+        <hr>
+        <!-- =================weather widget start====================================================== -->
         <div class="container body">
-        <!-- weather widget start -->
-            <a target="_blank" href="http://www.booked.net/weather/portsmouth-3880"><img src="https://w.bookcdn.com/weather/picture/32_3880_0_1_17bc9c_250_13a085_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=57198"  alt="booked.net"/></a><!-- weather widget end -->
+          <div class="row ">
+            <div class="col s6">
+              <center>
+              <a target="_blank" href="http://www.booked.net/weather/portsmouth-3880"><img src="https://w.bookcdn.com/weather/picture/32_3880_0_1_17bc9c_250_13a085_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=57198"  alt="booked.net"/></a>
+              </center><!-- weather widget end -->
+            </div>
+
+        <!-- ============================ email and text Notification with API  ==================================== -->
+            <div class="col s6">
+            <!-- Email Notifaication -->
+                <center>
+                      <button id="emailNotification" class="btn waves-effect waves-light teal" type="" name="action">EMAIL notifaication</button>
+                  </center>
+
+                  <br>
+
+                  <center>
+                      <button id="textNotification" class="btn waves-effect waves-light teal" type="" name="action">TEXT notifaication</button>
+                  </center>
+            </div> 
+   <!--================== ADD NEW GAME============================================================== -->
+        
+          <!-- Modal Structure -->
+          <div id="addNewGame" class="table table-bordered">
+      
+             <center>ADD GAME HERE</center>
+             <hr>
+              <!-- input from user -->
+               <a class='dropdown-button btn' href='#' data-activates='dropdown1'>SELECT GAME</a>
+
+                  <!-- Dropdown Structure -->
+                 <ul id='dropdown1' class='dropdown-content'>
+                   <li id="#footballGame">football</li>
+                   <li id="#hockeyGame">Hockey</li>
+                   <li id="#baseballGame">Baseball</li>
+                   <li id="#soccerGame">soccer</li>
+                 </ul>
+                 <hr>
+              <div class="row ">
+                  <div class="input-field col s6">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="gameEvent" type="text" class="validate">
+                     <label >Upcoming Events Name</label>
+                  </div>
+                  <div class="input-field col s6">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="gameDate" type="text" class="timepicker">
+                     <label >Date</label>
+                  </div>
+                  <div class="input-field col s6">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="time-slot" type="text" class="timepicker">
+                     <label >Time</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s4">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="adminGameLocation" type="text" class="validate">
+                     <label >Game location Address</label>
+                  </div>
+                  <div class="input-field col s4">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="adminAddCity" type="text" class="validate">
+                     <label >city</label>
+                  </div>
+                  <div class="input-field col s4">
+                     <!-- <i class="material-icons prefix">account_circle</i> -->
+                     <input id="adminZipcode" type="text" class="validate">
+                     <label >zipcode</label>
+                  </div>
+                </div>
+                
+                <center>
+                  <button class="btn waves-effect waves-light teal" type="" name="action">Submit</button>
+              </center><br>
+          </div>
         </div>
-         <div class="container body">
-           <div id="tabs" style="height: 360px">
-            <ul>
-            <li ><a href="#tabs-1" style="font-size: 12px">New Registartion</a></li>
-            <li ><a href="#tabs-2"  style="font-size: 12px">Batches</a></li>
-            </ul>
-            <div id="tabs-1" style="height: 300px">
-            <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
-            </div>
-            <div id="tabs-2" style="height: 300px">
-            <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
-            </div>
-            </div>
-            <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-            <script src="https://canvasjs.com/assets/script/jquery-ui.1.11.2.min.js"></script>
-            <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+      </div>
 
-        </div>
+      <hr>
+   
 
 
-
-        <!-- table : games
+<!-- table : games
         ================================================== -->
              <!-- table1 -->
     <div class="container body">
@@ -272,68 +316,10 @@
                 </div>
               </div>
 
-       </div>
-<!-- add new game -->
-              <div class="clearfix"></div>
-               <!-- Modal Trigger -->
-    <div class="container body">
-    <!-- Modal Structure -->
-    <div id="addNewGame" class="table-bordered">
-      
-             <h3>add game here</h3>
-              <!-- input from user -->
-               <a class='dropdown-button btn' href='#' data-activates='dropdown1'>SELECT GAME</a>
-
-                  <!-- Dropdown Structure -->
-                 <ul id='dropdown1' class='dropdown-content'>
-                   <li id="#footballGame">football</li>
-                   <li id="#hockeyGame">Hockey</li>
-                   <li id="#baseballGame">Baseball</li>
-                   <li id="#soccerGame">soccer</li>
-                 </ul>
-              <div class="row">
-                  <div class="input-field col s6">
-                     <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="gameName" type="text" class="validate">
-                     <label >Game Name</label>
-                  </div>
-                  <div class="input-field col s6">
-                     <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="time-slot" type="text" class="timepicker">
-                     <label >Time Slot</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s4">
-                     <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="adminGameLocation" type="text" class="validate">
-                     <label >Game location Address</label>
-                  </div>
-                  <div class="input-field col s4">
-                     <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="adminAddCity" type="text" class="validate">
-                     <label >city</label>
-                  </div>
-                  <div class="input-field col s4">
-                     <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="adminZipcode" type="text" class="validate">
-                     <label >zipcode</label>
-                  </div>
-                </div>
-                
-                <center>
-                  <button class="btn waves-effect waves-light teal" type="" name="action">Submit</button>
-              </center><br>
-          </div>
-        </div>
-    </div>
-    </div>
-
+       </div>            
     
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
+       
+        <!-- ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="js/jquery.min.js"></script>
 
