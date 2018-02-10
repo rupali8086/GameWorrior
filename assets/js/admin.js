@@ -111,25 +111,25 @@
 	$("#hockey > tbody").append("<tr><td>" + newgamename + "</td><td>" + newgameaddress+", "+newgamecity + "</td><td>" + moment(newgamedate + " " + newgametime).format('MM/DD/YYYY HH:mm') + "</td></tr>");
 
     });	
-
+	var teamacademy, teamname, teamsize;
     $("#addnewteam").on("click", function(event){
 
-		var academy = $("#teamacademy").val().trim();
-		var teamname = $("#teamname").val().trim();
-		var teamsize = $("#teamsize").val().trim();
+		teamacademy = $("#teamacademy").val().trim();
+		teamname = $("#teamname").val().trim();
+		teamsize = $("#teamsize").val().trim();
 		 
 		var teaminfo = {
-			academy: academy,
+			academy: teamacademy,
 			teamname: teamname,
 			teamsize: teamsize,
 			teamwin: 2,
 			teamloss: 1
 		}
 
-		firebase.database().ref('teams/'+academy).set(teaminfo);
+		firebase.database().ref('teams/'+teamacademy+'/'+teamname).set(teaminfo);
 	});
 
-	database.ref('teams/').on("child_added", function(childSnapshot, prevChildKey){
+	database.ref('teams/Baseball').on("child_added", function(childSnapshot, prevChildKey){
 
 	console.log(childSnapshot.val());
 
@@ -142,5 +142,66 @@
 	//write fields to html
 
 	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
+
+	$("#teamacademy").val("");
+	$("#teamname").val("");
+	$("#teamsize").val("");
+
+    });	
+    database.ref('teams/Hockey').on("child_added", function(childSnapshot, prevChildKey){
+
+	console.log(childSnapshot.val());
+
+	// Store everything into a variable.
+	var newteamname = childSnapshot.val().teamname;
+	var gameacademy = childSnapshot.val().academy;
+	var teamwin = childSnapshot.val().teamwin;
+	var teamloss = childSnapshot.val().teamloss;
+
+	//write fields to html
+
+	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
+
+	$("#teamacademy").val("");
+	$("#teamname").val("");
+	$("#teamsize").val("");
+
+    });	
+    database.ref('teams/Football').on("child_added", function(childSnapshot, prevChildKey){
+
+	console.log(childSnapshot.val());
+
+	// Store everything into a variable.
+	var newteamname = childSnapshot.val().teamname;
+	var gameacademy = childSnapshot.val().academy;
+	var teamwin = childSnapshot.val().teamwin;
+	var teamloss = childSnapshot.val().teamloss;
+
+	//write fields to html
+
+	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
+
+	$("#teamacademy").val("");
+	$("#teamname").val("");
+	$("#teamsize").val("");
+
+    });	
+    database.ref('teams/Soccer').on("child_added", function(childSnapshot, prevChildKey){
+
+	console.log(childSnapshot.val());
+
+	// Store everything into a variable.
+	var newteamname = childSnapshot.val().teamname;
+	var gameacademy = childSnapshot.val().academy;
+	var teamwin = childSnapshot.val().teamwin;
+	var teamloss = childSnapshot.val().teamloss;
+
+	//write fields to html
+
+	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
+
+	$("#teamacademy").val("");
+	$("#teamname").val("");
+	$("#teamsize").val("");
 
     });	

@@ -14,8 +14,6 @@ $(document).ready(function(){
 	var database = firebase.database();
 	var currentusername = sessionStorage.getItem("username");
 
-	
-
 	console.log("CURRENT USER :: "+currentusername);
 		
 	var userref = database.ref("users/"+currentusername);
@@ -72,18 +70,18 @@ $(document).ready(function(){
                 number: "Please enter only numeric value"
           },
 	      email: "Please enter a valid email address"
-	    }
+	    },
 	    // Make sure the form is submitted to the destination defined
 	    // in the "action" attribute of the form when valid
-	   /* submitHandler: function(form) {
+	    submitHandler: function(form) {
 	    	event.preventDefault();
 	    	registeruser();
-	     }*/
+	     }
 	  });
 
 	var firstname,lastname,childfirstname,childlastname,address,city,zipcode,phone,email,dob,gamelocation,agegroup,emailnotify,textnotify;
 
-	$("#register").on("click", function(event){
+	function registeruser(){
 
 		event.preventDefault();
 
@@ -130,21 +128,30 @@ $(document).ready(function(){
 		}
 			
    		var currentusername = sessionStorage.getItem("username");
+
+   		// if()
 			
 		firebase.database().ref('users/'+currentusername+'/parent').update(userinfo);
 		firebase.database().ref('users/'+currentusername+'/child'+childfirstname).set(childinfo);
 
-		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
-  			console.log(snapshot.val().childfirstname);
-  			$("#registration-form")[0].reset();
+		firebase.database().ref('users/'+currentusername).on('child_added', function(childSnapshot, prevChildKey){
+  			
+  			console.log("Parent : "+childSnapshot.val());
+
+  			$("#message_window").html("Child information added successfully");
+
   			alert("child information added successfully");
+  			$("#registration-form")[0].reset();
+  			
+  					//
   		});
 	
-	});
+	}
 
 	$("#addchild").on("click", function(){
 
 		event.preventDefault();
+		$("#registration-form").validate();
 		firebase.database().ref('users/'+currentusername+'/parent').once('value').then(function(snapshot){
   			
   			Materialize.updateTextFields();

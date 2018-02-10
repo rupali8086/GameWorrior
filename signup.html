@@ -29,7 +29,7 @@
     <style type="text/css">
     
       body{
-        background-image: url("assets/image/sports2.jpg") ;
+        /*background-image: url("assets/image/sports2.jpg") ;*/
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -54,6 +54,8 @@
         }
         nav{padding: 20px;}
      .signup:hover {transform: scale(1.5);}  
+     /*#signup-form{ margin-top: 30px; } */
+
   </style>
 </head>
 <body class="animated slideInLeft">
@@ -68,11 +70,23 @@
             <nav>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo center-align">SIGN  IN </a>
+                      <!-- <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a class="waves-effect waves-light  modal-trigger signup" href="#register">SIGN UP HERE</a></li>
+                      </ul> -->
                 </div>
             </nav>
             <!-- end nav bar -->
             <hr>
-              <div class="row">
+
+            <div class="row m-0">
+                <!-- email -->
+                <div class="input-field col xl2">
+                   <i class="material-icons prefix">account_circle</i>
+                   <input id="username-signin" type="text" name="username-signin" class="validate">
+                   <label for="username-signin">Username</label>
+                </div>
+               </div>
+              <div class="row m-0">
                 <!-- email -->
                 <div class="input-field col xl2">
                    <i class="material-icons prefix">email</i>
@@ -80,7 +94,7 @@
                    <label for="email-signin">Email</label>
                 </div>
                </div>
-               <div class="row">
+               <div class="row m-0">
                 <!-- password -->
                 <div class="input-field col xl2">
                    <i class="material-icons prefix">lock_outline</i>
