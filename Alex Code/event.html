@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="C:\Users\ajimenez\Documents\Weekend Warrior\ww3.css">
+  <link rel="stylesheet" type="text/css" href="./ww3.css">
 
 
 </head>
@@ -41,7 +41,11 @@
 		<p> Weekend Warrior has some fantastic affliations across New England. As a member of our althetic community, you will have access to all these events with a massive dicount. Check it out!</p>
 	</div>
 	<div class = "col-lg-6">
-		<h1>API GOES HERE</h1>
+    <h3 id="geektext">Title</h3>
+    <h3 id="geekdate">Date-Time</h3>
+    <div id="geektix">
+
+    </div>
 	</div>
 	</div>
   <div class="row">
@@ -152,5 +156,42 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.js"></script>  
+  <script type="text/javascript">
+
+    var genres = 'https://api.seatgeek.com/2/taxonomies?id=1010000&id=1040000&id=1050000&id=1020000&client_id=MTA0OTY0OTZ8MTUxNzg5MjkwNi45NQ';
+    var gurl = 'https://api.seatgeek.com/2/events?postal_code=03801&datetime_local.gte=2018-02-10&datetime_local.lt=2018-010-01&taxonomies.name=sports&client_id=MTA0OTY0OTZ8MTUxNzg5MjkwNi45NQ';
+
+    $.ajax({
+      url: gurl,
+      method: "GET",
+      // headers: {"Authorization": hdrVal},
+      success: function (data) {
+       console.log(data);
+      },
+      error: function(){
+        console.log("Cannot get data");
+      }
+    }).then(function(response) {
+        var results = response;
+        $("#geektext").html(results.events[0].title);
+        console.log("Title " + results.events[0].title);
+        console.log("datetime_local " + results.events[0].datetime_local);
+        var eventThing = results.events[0].datetime_local;
+        var mom = moment(eventThing);
+        var eventDate = mom.format("LLLL");
+        var tickets = results.events[0].venue.url;
+        $("#geekdate").html(eventDate);
+        console.log("eventDate " + eventDate);
+        console.log("tickets " + tickets);
+        var hrefDiv = $("<div class='item'>");
+        var topicImage = $("<a>").attr("href", tickets).html('<h3>' + tickets + '</h3>'); 
+        hrefDiv.append(topicImage);
+        $("#geektix").append(hrefDiv);
+    });
+
+  </script>
+
 </body>
 </html>
