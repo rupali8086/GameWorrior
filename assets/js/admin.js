@@ -34,6 +34,13 @@
 		}
 
 		firebase.database().ref('games/'+academy+'/'+gamename).set(gameinfo);
+		$("#academy").val("");
+		$("#gameEvent").val("");
+		$("#gameDate").val("");
+		$("#gameTime").val("");
+		$("#gameLocation").val("");
+		$("#gameCity").val("");
+		$("#gameZipcode").val("");
 	});
 
 	database.ref('games/Baseball').on("child_added", function(childSnapshot, prevChildKey){
@@ -127,6 +134,9 @@
 		}
 
 		firebase.database().ref('teams/'+teamacademy+'/'+teamname).set(teaminfo);
+		$("#teamacademy").val("");
+		$("#teamname").val("");
+		$("#teamsize").val("");
 	});
 
 	database.ref('teams/Baseball').on("child_added", function(childSnapshot, prevChildKey){
@@ -142,11 +152,6 @@
 	//write fields to html
 
 	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
-
-	$("#teamacademy").val("");
-	$("#teamname").val("");
-	$("#teamsize").val("");
-
     });	
     database.ref('teams/Hockey').on("child_added", function(childSnapshot, prevChildKey){
 
@@ -162,11 +167,7 @@
 
 	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
 
-	$("#teamacademy").val("");
-	$("#teamname").val("");
-	$("#teamsize").val("");
-
-    });	
+	});	
     database.ref('teams/Football').on("child_added", function(childSnapshot, prevChildKey){
 
 	console.log(childSnapshot.val());
@@ -180,10 +181,6 @@
 	//write fields to html
 
 	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
-
-	$("#teamacademy").val("");
-	$("#teamname").val("");
-	$("#teamsize").val("");
 
     });	
     database.ref('teams/Soccer').on("child_added", function(childSnapshot, prevChildKey){
@@ -199,10 +196,7 @@
 	//write fields to html
 
 	$("#teams > tbody").append("<tr><td>" + newteamname + "</td><td>" + gameacademy + "</td><td>" + teamwin +' / '+ teamloss +"</td></tr>");
-
-	$("#teamacademy").val("");
-	$("#teamname").val("");
-	$("#teamsize").val("");
+	
 	});
 
 	var phoneList = [];
