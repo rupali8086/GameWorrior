@@ -6,7 +6,6 @@
     <title>Admin page</title>
 
     <link rel="icon" href="assets/image/favicon.ico" type="image/ico" sizes="16x16">
-
     <script src="https://www.gstatic.com/firebasejs/4.9.1/firebase.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -22,30 +21,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/animate.css">
-    <link href="https://canvasjs.com/assets/css/jquery-ui.1.11.2.min.css" rel="stylesheet" />
-
-
+   
         <style>
             body{
-                color:white; background: #590a18;
+                color:white; 
+                background: #590a18;
             }
-             .ui-tabs-anchor {outline: none;}
-             #soccer,#football,#hockey,#baseball,#addNewGame{
+<<<<<<< HEAD
+=======
+            .collection-item{ color: black; background: #590a18;}
+>>>>>>> 4e7e3a47e88a7a26b2bfbda5327fe6dd08900b34
+            .ui-tabs-anchor {outline: none;}
+            #soccer,#football,#hockey,#baseball,#addNewGame{
                 margin:30px;
                 height: auto;
                 }
             .nav-wrapper{padding: 20px;}
-
         </style>
        
       <script type="text/javascript">
          $(document).ready(function(){
           // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
           $('.modal').modal();
+          //$('select').material_select();
+          // for date 
+         $('select').material_select(); 
+         $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 5, // Creates a dropdown of 15 years to control year,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+         });
+        $('.timepicker').pickatime({
+           default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+           fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+           twelvehour: false, // Use AM/PM or 24-hour format
+           donetext: 'OK', // text for done-button
+           cleartext: 'Clear', // text for clear-button
+           canceltext: 'Cancel', // Text for cancel-button
+           autoclose: false, // automatic close timepicker
+           ampmclickable: true, // make AM PM clickable
+           aftershow: function(){} //Function for after opening timepicker
+         });
         });
       </script>
   </head>
@@ -88,192 +112,91 @@
                       <button id="textNotification" class="btn waves-effect waves-light teal" type="" name="action">TEXT notifaication</button>
                   </center>
             </div> 
+         </div>
+        </div>
    <!--================== ADD NEW GAME============================================================== -->
         
           <!-- Modal Structure -->
+        <div class="container body">
+          <div class="row">
           <div id="addNewGame" class="table table-bordered">
       
-             <center>ADD GAME HERE</center>
-             <hr>
-              <!-- input from user -->
-               <a class='dropdown-button btn' href='#' data-activates='dropdown1'>SELECT GAME</a>
-
-                  <!-- Dropdown Structure -->
-                 <ul id='dropdown1' class='dropdown-content'>
-                   <li id="#footballGame">football</li>
-                   <li id="#hockeyGame">Hockey</li>
-                   <li id="#baseballGame">Baseball</li>
-                   <li id="#soccerGame">soccer</li>
-                 </ul>
-                 <hr>
+             <div class="display-4"><center>ADD GAME HERE</center></div>
               <div class="row ">
+                <div class="input-field col s6">
+                      <select id="academy" name="academy">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Baseball">Baseball Academy</option>
+                        <option value="Hockey">Hockey Academy</option>
+                        <option value="Football">Football Academy</option>
+                        <option value="Soccer">Soccer Academy</option>
+                     </select>
+                     <label>Game Academy</label>
+                  </div>
                   <div class="input-field col s6">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
                      <input id="gameEvent" type="text" class="validate">
                      <label >Upcoming Events Name</label>
                   </div>
+                  
                   <div class="input-field col s6">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="gameDate" type="text" class="timepicker">
+                     <input id="gameDate" type="text" class="datepicker">
                      <label >Date</label>
                   </div>
                   <div class="input-field col s6">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="time-slot" type="text" class="timepicker">
+                     <input id="gameTime" type="text" class="timepicker">
                      <label >Time</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s4">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="adminGameLocation" type="text" class="validate">
+                     <input id="gameLocation" type="text" class="validate">
                      <label >Game location Address</label>
                   </div>
                   <div class="input-field col s4">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="adminAddCity" type="text" class="validate">
+                     <input id="gameCity" type="text" class="validate">
                      <label >city</label>
                   </div>
                   <div class="input-field col s4">
                      <!-- <i class="material-icons prefix">account_circle</i> -->
-                     <input id="adminZipcode" type="text" class="validate">
+                     <input id="gameZipcode" type="text" class="validate">
                      <label >zipcode</label>
                   </div>
                 </div>
                 
                 <center>
-                  <button class="btn waves-effect waves-light teal" type="" name="action">Submit</button>
+                  <button class="btn waves-effect waves-light teal" id="addnewgame">Submit</button>
               </center><br>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <hr>
-   
-
-
-<!-- table : games
-        ================================================== -->
-             <!-- table1 -->
-    <div class="container body">
-            <!-- <div class="clearfix"></div> -->
-             <div class="col" id="baseball">
-                <h2>Baseball</h2>
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-
+          <div class="row">
+            <div class="table table-bordered">
+              <div class="display-4"><center>ADD TEAM HERE</center></div>
+              <div class="row">
+                <div class="input-field col s4">
+                      <select id="teamacademy" name="teamacademy">
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="Baseball">Baseball Academy</option>
+                        <option value="Hockey">Hockey Academy</option>
+                        <option value="Football">Football Academy</option>
+                        <option value="Soccer">Soccer Academy</option>
+                     </select>
+                     <label>Game Academy</label>
                   </div>
+                  <div class="input-field col s4">
+                    <input id="teamname" type="text" class="validate">
+                    <label >Team Name</label>
                 </div>
-              </div>
-
-              <!-- football -->
-            <div class="container body">
-                <div class="col" id="football">
-                
-                    <h2>Football game </h2>
-                    
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
+                <div class="input-field col s4">
+                    <input id="teamsize" type="text" class="validate">
+                    <label >Team Size</label>
                 </div>
-              </div>
-
-<!-- soccer -->
-                 <div class="container body">
-                 <div class="col" id="soccer">
-                
-                    <h2>Soccer</h2>
-                    
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>#</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>Username</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry</td>
-                          <td>the Bird</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                  </div>
                 </div>
+<<<<<<< HEAD
               </div>
 
 <!-- hockey -->
@@ -320,11 +243,123 @@
     
        
         <!-- ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/jquery.min.js"></script>
+         <script type="text/javascript">
+        // for date 
+        $('select').material_select();  
+        $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 
-
-        <script src="js/bootstrap.min.js"></script>
+      $('.timepicker').pickatime({
+    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+    twelvehour: false, // Use AM/PM or 24-hour format
+    donetext: 'OK', // text for done-button
+    cleartext: 'Clear', // text for clear-button
+    canceltext: 'Cancel', // Text for cancel-button
+    autoclose: false, // automatic close timepicker
+    ampmclickable: true, // make AM PM clickable
+    aftershow: function(){} //Function for after opening timepicker
+  });
+    </script>
+    <script src="assets/js/registration.js"></script>
+=======
+                <center><button class="btn waves-effect waves-light teal" id="addnewteam">Submit</button></center><br>
+            
+            </div>
+        </div>
+        <hr>
+   
+        <!-- table : games
+        ================================================== -->
+        <!-- table1 -->
+    <div class="row">
+        <div class="col s8">
         
+            <div class="display-4">Baseball Games</div>
+            <table class="table table-bordered m-2 mb-4" id="baseball">
+                <thead>
+                    <tr>
+                        <th>Game</th>
+                        <th>Location</th>
+                        <th>Date Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        
+       <!-- football -->
+        <div class="container body">
+            <div class="display-4">Football Games</div>
+            <table class="table table-bordered m-2 mb-4" id="football">
+                <thead>
+                    <tr>
+                        <th>Game</th>
+                        <th>Location</th>
+                        <th>Date Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <!-- soccer -->
+        <div class="container body">
+            <div class="display-4">Soccer Games</div>                   
+            <table class="table table-bordered m-2 mb-4" id="soccer">
+                <thead>
+                    <tr>
+                    <th>Game</th>
+                    <th>Location</th>
+                    <th>Date Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <!-- hockey -->
+        <div class="container body">
+            <div class="display-4">Hockey Games</div>                   
+            <table class="table table-bordered m-2 mb-4" id="hockey">
+                <thead>
+                    <tr>
+                    <th>Game</th>
+                    <th>Location</th>
+                    <th>Date Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <div class="col s-4">
+        <div class="container body">
+            <div class="display-4">Teams</div>                   
+            <table class="table table-bordered m-2 mb-4" id="teams">
+                <thead>
+                    <tr>
+                    <th>Team Name</th>
+                    <th>Academy</th>
+                    <th>Win/Loss</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        </div>
+     </div>            
+           
+    <script src="assets/js/admin.js"></script>   
+>>>>>>> 4e7e3a47e88a7a26b2bfbda5327fe6dd08900b34
     </body>
     </html>
