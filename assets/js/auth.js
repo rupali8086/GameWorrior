@@ -91,6 +91,7 @@ function signup(){
 			  firebase.database().ref('users/'+username+'/parent').set({
 			  			 firstname: firstname,
    						 lastname: lastname,
+   						 username:username,
    						 email: email,
    						 emailverified: false,
    						 password: password,
@@ -102,7 +103,6 @@ function signup(){
    						 emailnotify: false
   					});
 			  firebase.database().ref('users/'+username).update({
-
 			  		usertype: "parent"
 			  });
 			  sessionStorage.setItem("email", email);
@@ -135,6 +135,8 @@ function signup(){
 
  		let email_signin = $("#email-signin").val().trim();
 		let password_signin = $("#password-signin").val().trim();
+		let username_signin = $("#username-signin").val().trim();
+
  		firebase.auth().signInWithEmailAndPassword(email_signin, password_signin).catch(function(error) {
 			  // Handle Errors here.
 			  var errorMessage = error.message;
@@ -142,27 +144,28 @@ function signup(){
 			  var email = error.email;
 			  console.log("error in sign-in :: "+ errorMessage + " :: "+email);
 		});
- 		var current_user = firebase.auth().currentUser;
- 		console.log(" currentuser :: "+current_user.emailVerified);
-
+ 		
  		firebase.auth().onAuthStateChanged(function(user) {
   		if (user!=null) {
-    		console.log("auth changed :: SUCCCCESSSSS "+user.email);
-    		firebase.database().ref('users/').orderByChild('email').equalTo(user.email).on("child_added", function(snapshot) {
+  			var current_user_email = user.email;
+    		console.log("auth changed :: SUCCCCESSSSS "+email_signin+" : "+username_signin);
+    		sessionStorage.setItem("email", email_signin);
+  			sessionStorage.setItem("username", username_signin);
 
-    			sessionStorage.setItem( "email", user.email);
-    			sessionStorage.setItem( "username", snapshot.key);
-				console.log(snapshot.val());
-    		});
-    		
-  			clearform();
-  			window.location.href = "options.html";
+  			firebase.database().ref('users').child(username_signin).once('value').then(function(snapshot) {
+    					console.log(snapshot.val().usertype);
+    					if(snapshot.val().usertype == 'admin'){
+    						window.location.href = "adminpage1.html";
+    					}
+  				});//clearform();
+  			//window.location.href = "options.html";
   			} else {
     		// No user is signed in.
     		console.log("auth changed FAILLLUREEEELOLNO:: "+user);
   		}
 	});
- });
+
+});
  $("#googlesignin").on("click", function(){
 
  		console.log("User Inside!! ");
