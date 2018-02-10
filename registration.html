@@ -55,8 +55,11 @@
         padding: 40px;
         padding-top: 10px;
       }
-      #ready{
+      #showprofile{
          float: right;
+      }
+      #message_window{
+         color: red;
       }
       .confirmation-tabs-btn
       {
@@ -75,16 +78,16 @@
   <div class="container white z-depth-2">
     <div class="row">
       <div id="login" class="col-12 animated fadeIn">
-        <form class="col s12" id="registration-form" method="post">
-         <!-- form cointainer -->
-          <div class="form-container">
-            <h3 class="teal-text">2018 Registration</h3>
-            <div>
-             <!--  <button class="btn waves-effect waves-light teal" id="showprofile">Profile</button> -->
-               <button class="btn waves-effect waves-light teal" id="addchild">Add Another player</button>
+         <h3 class="teal-text">2018 Registration</h3>
+            <div class="row">
+               <div class="col s4 text-center"><p id="message_window"></p></div>
+               <div class="col s4"><button class="btn wave-effect waves-light teal" id="showprofile">Profile</button></div>
             </div>
             <hr>
             <!-- first row -->
+            <form class="col s12" id="registration-form" method="post">
+            <!-- form cointainer -->
+            <div class="form-container">
             <div class="row"> 
               <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
@@ -168,8 +171,8 @@
                <i class="material-icons prefix">school</i>
                 <select id="agegroup" class="required" name="agegroup">
                     <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Kids Group (5yrs - 10yrs)</option>
-                    <option value="2">Teen Group (11 - 16yrs)</option>
+                    <option value="1">Junior Group (5yrs - 10yrs)</option>
+                    <option value="2">Youth Group (11 - 16yrs)</option>
                  </select>
                  <label>* Age Group </label>
               </div>
@@ -236,7 +239,8 @@
               </div><br><br>
             <center>
                
-                <button class="btn waves-effect waves-light teal" id="regist1">REGISTER</button>
+                <button class="btn waves-effect waves-light teal" id="register">REGISTER</button>
+                <div class="col s4"><button class="btn waves-effect waves-light teal" id="addchild">Add Another player</button></div>
                 <br><br>
            </center>
           
@@ -256,18 +260,6 @@
     clear: 'Clear',
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
-  });
-    
-    $('.timepicker').pickatime({
-    default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
-    twelvehour: false, // Use AM/PM or 24-hour format
-    donetext: 'OK', // text for done-button
-    cleartext: 'Clear', // text for clear-button
-    canceltext: 'Cancel', // Text for cancel-button
-    autoclose: false, // automatic close timepicker
-    ampmclickable: true, // make AM PM clickable
-    aftershow: function(){} //Function for after opening timepicker
   });
     </script>
     <script src="assets/js/registration.js"></script>
