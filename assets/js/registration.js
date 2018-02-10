@@ -141,10 +141,10 @@ $(document).ready(function(){
   			
   			console.log("Parent : "+childSnapshot.val());
 
-  			//$("#message_window").html("Child information added successfully");
+  			$("#message_window").html("Child information added successfully");
 
-  			$('.modal-body').text("Child information added successfully");
-        	$('#myModal').modal('show');
+  			// $('.modal-body').text("Child information added successfully");
+     //    	$('#myModal').modal('show');
   			$("#registration-form")[0].reset();
   			
   		});
