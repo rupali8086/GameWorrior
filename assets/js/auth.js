@@ -113,7 +113,7 @@ function signup(){
 
 			  		console.log("Email Sent Successfully to user"+user.email);
   					clearform();
-  					window.location.href = "options.html";
+  					window.location.href = "wwoption.html";
 
   				// Email sent.
 			 }).catch(function(error) {
@@ -157,8 +157,10 @@ function signup(){
     					if(snapshot.val().usertype == 'admin'){
     						window.location.href = "adminpage1.html";
     					}
-  				});//clearform();
-  			//window.location.href = "options.html";
+    					else if(snapshot.val().usertype == 'parent'){
+    						window.location.href = "wwoption.html";
+    					}
+  				});
   			} else {
     		// No user is signed in.
     		console.log("auth changed FAILLLUREEEELOLNO:: "+user);
@@ -179,7 +181,7 @@ function signup(){
 			  var user = result.user;
 
 			  console.log("Auth :: "+user);
-			  window.location.href = "options.html";
+			  window.location.href = "wwoption.html";
 			
 			}).catch(function(error) {
 			  // Handle Errors here.
@@ -206,7 +208,7 @@ function signup(){
   		// The signed-in user info.
   		var user = result.user;
   		console.log("FB Login :: "+user);
-  		window.location.href = "options.html";
+  		window.location.href = "wwoptions.html";
   		// ...
 		}).catch(function(error) {
   		// Handle Errors here.

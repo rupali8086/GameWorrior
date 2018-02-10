@@ -11,7 +11,7 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
     crossorigin="anonymous"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> 
@@ -80,6 +80,7 @@
       <div id="login" class="col-12 animated fadeIn">
          <h3 class="teal-text">2018 Registration</h3>
             <div class="row">
+              <div class="col s4"><button class="btn waves-effect waves-light teal" id="addchild">Add Another player</button></div>
                <div class="col s4 text-center"><p id="message_window"></p></div>
                <div class="col s4"><button class="btn wave-effect waves-light teal" id="showprofile">Profile</button></div>
             </div>
@@ -238,18 +239,29 @@
                 </label>
               </div><br><br>
             <center>
-               
                 <button class="btn waves-effect waves-light teal" id="register">REGISTER</button>
-                <div class="col s4"><button class="btn waves-effect waves-light teal" id="addchild">Add Another player</button></div>
-                <br><br>
+            <br><br>
            </center>
-          
         </form>
-        
       </div>
- 
+     </div>
     </div>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-body">
+            <p>Some text in the modal.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+      
     </div>
+  </div>
     <script type="text/javascript">
         // for date 
         $('select').material_select();  
