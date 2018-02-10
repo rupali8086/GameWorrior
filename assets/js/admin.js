@@ -226,9 +226,34 @@
         });
     });
 
-    //   $("#emailNotification").on("click", function(event){
-	// 		event.preventDefault();
+    $("#emailNotification").on("click", function(event){
+		event.preventDefault()
+		for (var i = 0; i < emailList.length; i++) {
+		    var queryURL = "https://api.mailgun.net/v3/";
+		    var hdrVal = "Basic " + btoa("api:key-8ce149dcc54510054cb3cfe66d228d4c");
+		    $.ajax({
+		        url: "https://us-central1-empower-hope.cloudfunctions.net/api/mailgun-api/sandbox340a602d270f4b699673a555c306dc9c.mailgun.org/messages",
+		        method: "POST",
+		        headers: {"Authorization": hdrVal},
+		        data: {
+		          from: "trivedishraddha99@gmail.com",
+		          to: emailList[i],
+		          subject: "Weekend Warrior Weather Cancellation",
+		          text: "Todays game has been cancelled. Log onto the Weekend Warrior website to review scheduling changes. These changes will be viewable on your profile page. Thank you."
+		        },
+		      success: function (data) {
+		        console.log(data);
+		      },
+		      error: function(){
+		         console.log("Cannot get data");
+		      }
 
+		    }).then(function(response) {
+		        var results = response;
+
+		    });
+		}
+	});
 
 	  var twilioURL = encodeURI('https://api.twilio.com/2010-04-01/Accounts/ACf541d846122b00cf1b3008b10b0aed5f/Messages.json');
       var SID = 'ACf541d846122b00cf1b3008b10b0aed5f';
